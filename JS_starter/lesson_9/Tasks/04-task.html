@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+
+<body>
+    <pre>
+        Задание:
+        Дано массив. Создайте на основе значений этого массива два новых массива. В один массив поместите
+        все четные значения, а во второй все нечетные.
+        Выведите на экран значения, которые вошли в первый массив и во второй массив.
+    </pre>
+    <script>
+        let values = [10, 20, 5, 7, 11, 8, 125, 4, 8, 3, 23];
+        let evenArrey = [];
+        let oddAwwey = [];
+        let countEven = 0;
+        let countOdd = 0;
+
+        for (const value of values) {
+            if (value % 2 == 0) {
+                evenArrey[countEven] = value;
+                countEven++;
+            }
+            else {
+                oddAwwey[countOdd] = value;
+                countOdd++;
+            }
+        }
+
+        console.log('Четные значения');
+        for (const even of evenArrey) {
+            console.log(even);
+        }
+        
+        console.log('Нечетные значения');
+        for (const odd of oddAwwey) {
+            console.log(odd);
+        }
+    </script>
+</body>
+
+</html>
