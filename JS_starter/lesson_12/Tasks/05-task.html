@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task X</title>
 </head>
+
 <body>
     <pre>
         Задание:
-        Запросите у пользователя число. Выведите все числа в обратном порядке от введенного пользователем значения до 1. Используйте для решения рекурсию.
+        Запросите у пользователя число. Выведите все числа в обратном порядке от введенного пользователем 
+        значения до 1. Используйте для решения рекурсию.
     </pre>
     <script>
-        
+        function recursion(value) {
+            console.log(value)
+            value == 1 ? 1 : recursion(value - 1);
+        }
+
+        let number = +prompt('Введите любое положительное число больше 1');
+        if (isNaN(number)) {
+            alert('Вы ввели не числовое значение');
+        }
+        else if (number < 1) {
+            alert('Вы ввели число меньше допустимого значения');
+        }
+        else {
+            recursion(number);
+        }
+
     </script>
 </body>
+
 </html>

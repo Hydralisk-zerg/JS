@@ -14,14 +14,8 @@
     </pre>
     <script>
         var data = [1, 2, 3, 4, 5];
-
-        var result = data.map(function (value) {
-            return value * value;
-        });
-
-        result.forEach(function(e) {
-            console.log(e);
-        });
+        var result = data.map(value => value * value);
+        result.forEach(e => console.log(e));
     </script>
 </body>
 
