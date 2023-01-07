@@ -10,7 +10,8 @@
 <body>
     <pre>
         Задание:
-        Выполните рефакторинг кода. Вынесите блок кода инициализирующий массив count и блок кода рассчитывающий и выводящий сумму покупок в две отдельные функции.
+        Выполните рефакторинг кода. Вынесите блок кода инициализирующий массив count и блок кода рассчитывающий 
+        и выводящий сумму покупок в две отдельные функции.
         Поведение сценария не должно измениться.
     </pre>
     <script>
@@ -27,26 +28,35 @@
         prices[2] = 12.50;  // Ручка шариковая синяя
 
         let count = [];
-        for (let i = 0; i < names.length; i++) {
-            const productName = names[i];
-            let counttoBuy = +prompt("Укажите количество для " + productName);
-
-            if (isNaN(counttoBuy))
-                counttoBuy = 0;
-
-            count.push(counttoBuy);
-        }
-
         let totalSum = 0;
-        for (let i = 0; i < names.length; i++) {
-            const productName = names[i];
-            const productPrice = prices[i];
-            const boughtCount = count[i];
 
-            let price = productPrice * boughtCount;
-            totalSum += price;
-            console.log(`Куплено ${productName} на сумму ${price}`);
+        function functionCount() {
+            for (let i = 0; i < names.length; i++) {
+                const productName = names[i];
+                let counttoBuy = +prompt("Укажите количество для " + productName);
+
+                if (isNaN(counttoBuy))
+                    counttoBuy = 0;
+
+                count.push(counttoBuy);
+            }
         }
+
+        function functionTotalSum() {
+            for (let i = 0; i < names.length; i++) {
+                const productName = names[i];
+                const productPrice = prices[i];
+                const boughtCount = count[i];
+
+                let price = productPrice * boughtCount;
+                totalSum += price;
+                console.log(`Куплено ${productName} на сумму ${price}`);
+            }
+        }
+        
+        functionCount();
+        functionTotalSum()
+        
         console.log("Всего продуктов куплено на " + totalSum);
     </script>
 </body>

@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 5</title>
 </head>
+
 <body>
     <pre>
         Задание:
-        Создайте функцию, которая принимает массив значений и возвращает массив с дублирующимися значениями или null если повторяющихся значений в массиве нет.
+        Создайте функцию, которая принимает массив значений и возвращает массив с дублирующимися значениями 
+        или null если повторяющихся значений в массиве нет.
     </pre>
     <script>
-        
+        let array = [1, 2, 3, 4, 5, 15, 33, 46];
+        let array2 = [1, 2, 3, 4, 5, 15, 33, 46,  2, 3, 15, 33];
+
+        function duplicat(array) {
+            let arrayDuplicat = [];
+            for (let i = 0; i < array.length; i++) {
+                for (let j = i + 1; j < array.length; j++) {
+                    if (array[i] == array[j]){
+                       arrayDuplicat.push(array[i]);
+                    }
+                }
+            }
+            return arrayDuplicat.length == 0? null: arrayDuplicat;
+        }
+
+        let v1 = duplicat(console.log(v1));
+        let v2 = duplicat(console.log(v2));
+
     </script>
 </body>
+
 </html>

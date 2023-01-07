@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 2</title>
 </head>
+
 <body>
     <pre>
         Задание:
@@ -12,7 +14,27 @@
         Если параметр отсутствует - не используйте значение для расчета среднего арифметического значения.
     </pre>
     <script>
-        
+        function avg(a, b, c) {
+            let array = [];
+            array[0] = a;
+            array[1] = b;
+            array[2] = c;
+            let sum = 0;
+            let count = 0;
+
+            for (let i = 0; i < array.length; i++) {
+                if (!Number(array[i])) {
+                    continue;
+                }
+                else {
+                    sum += Number(array[i]);
+                    count++;
+                }
+            }
+            return sum / count;
+        }
+        console.log(avg(55, '5', 'c'));
     </script>
 </body>
+
 </html>
