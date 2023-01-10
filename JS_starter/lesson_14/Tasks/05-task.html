@@ -10,7 +10,8 @@
 <body>
     <pre>
         Задание:
-        Реализуйте метод showMostFavoritedFruit. Метод должен отображать фрукт, который чаще всего указывали как любимый на основе данных по пользователям из массива users.
+        Реализуйте метод showMostFavoritedFruit. Метод должен отображать фрукт, который чаще всего 
+        указывали как любимый на основе данных по пользователям из массива users.
     </pre>
     <script>
         // массив сгенерирован с помощью https://next.json-generator.com/
@@ -495,14 +496,33 @@
                 .forEach(user => console.log(user.company));
         }
 
-        function showMostFavoritedFruit()
-        {
-            
+        function showMostFavoritedFruit() {
+            let objectFruit = {};
+            users.forEach(fruit => {
+                if (objectFruit[fruit.favoriteFruit]) {
+                    objectFruit[fruit.favoriteFruit]++;
+                }
+                else {
+                    objectFruit[fruit.favoriteFruit] = 1;
+                }
+            });
+
+            let max = Number.MIN_VALUE;
+
+            for (let fruit in objectFruit) {
+                if (objectFruit[fruit] > max) {
+                    max = objectFruit[fruit];
+                }
+                if (objectFruit[fruit] == max) {
+                    console.log(`Фрукт ${fruit} встречаеться ${max} раза.`);
+                }
+            }
+
         }
 
-        showAllEmails();
-        showHigestFriendCount();
-        showMinMaxBalance();
+        //showAllEmails();
+        //showHigestFriendCount();
+        //showMinMaxBalance();
         showMostFavoritedFruit();
     </script>
 </body>
