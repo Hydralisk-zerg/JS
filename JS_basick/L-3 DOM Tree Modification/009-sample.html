@@ -4,25 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 5</title>
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .user-card {
+            background-color: blanchedalmond;
+            padding: 20px;
+            margin: 10px;
+            border: burlywood;
+            display: inline-block;
+            vertical-align: top;
+            min-height: 400px;
+            min-width: 250px;
+        }
+
+        .user-card p, .user-card ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .user-card ul {
+            list-style: none;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Email адреса пользователей</h2>
-    <p id="emailAddressesOutput"></p>
-
-    <h2>Пользователь, у которого больше всего друзей</h2>
-    <p id="greatesFriendsCountOutput"></p></p>
-
-    <h2>Компания пользователя с наибольшим балансом</h2>
-    <p id="greatestBalanceCompanyOutput"></p>
-
-    <h2>Компания пользователя с наименьшим балансом</h2>
-    <p id="lowestBalanceCompanyOutput"></p>
+    <!-- 
+        Пример структуры карточки, описывающей одного пользователя из массива
+        <div class="user-card">
+        <h2>FirstName LastName</h2>
+        <p>email: address</p>
+        <p>company: company name</p>
+        <br />
+        <p>friends: </p>
+        <ul>
+            <li>friend1</li>
+            <li>friend2</li>
+        </ul>
+    </div> -->
 
     <script>
-
-
         let users = [
             {
                 balance: '1250.89',
@@ -95,7 +121,6 @@
                         id: 1,
                         name: 'Gutierrez Padilla'
                     },
-
                     {
                         id: 2,
                         name: 'Noelle Wilkinson'
@@ -461,65 +486,27 @@
             }
         ];
 
-        /*
-        Задание:
-        Перепишите код таким образом, чтобы он не поменял своего поведения, но результат работы сценария выводился не в 
-        консоль, а в соответствующие p.
-               
-        Электронные адреса пользователей (каждый адрес с новой строки) - параграф с id emailAddressesOutput
-        Пользователи с наибольшим количеством друзей (каждый пользователь с новой строки) - параграф с id 
-        greatesFriendsCountOutput
-        Компании пользователей с наибольшим балансом - параграф с id greatestBalanceCompanyOutput
-        Компании пользователей с наименьшим балансом - параграф с id lowestBalanceCompanyOutput
-        */
-        // массив сгенерирован с помощью https://next.json-generator.com/
+        function createUserCard(user) {
+            let div = document.createElement("div");
+            div.classList.add("user-card");
+            div.insertAdjacentHTML("beforeend", `<h2>${user.name.first} ${user.name.last}</h2>`);
+            div.insertAdjacentHTML("beforeend", `<p>email: ${user.email}</p>`);
+            div.insertAdjacentHTML("beforeend", `<p>company: ${user.company}</p>`);
+            div.insertAdjacentHTML("beforeend", `<br />friends:`);
 
-        function showAllEmails() {
-            let emailAddresses = document.querySelector("#emailAddressesOutput");
-            users.forEach(user => emailAddresses.innerHTML += `${user.email}<br>`);
-        }
-
-        function showHigestFriendCount() {
-            let greatesFriendsCount = document.querySelector("#greatesFriendsCountOutput");
-            let max = Number.MIN_VALUE;
-
-            users.forEach(user => {
-                if (max < user.friends.length)
-                    max = user.friends.length;
-            });
-
-            users
-                .filter(user => user.friends.length == max)
-                .forEach(user => greatesFriendsCount.innerHTML += `${user.name.first} ${user.name.last}<br>`);
-        }
-
-        function showMinMaxBalance() {
-            let minBalance = Number.MAX_VALUE;
-            let maxBalance = Number.MIN_VALUE;
-
-            users.forEach(user => {
-                const currentBalance = +user.balance;
-                if (currentBalance > maxBalance)
-                    maxBalance = currentBalance;
-                else if (currentBalance < minBalance) {
-                    minBalance = currentBalance;
-                }
-            });
+            let ul = document.createElement("ul");
+            for (const friend of user.friends) {
+                ul.insertAdjacentHTML("beforeend", `<li>${friend.name}</li>`);
+            }
             
-            let greatestBalance = document.querySelector("#greatestBalanceCompanyOutput");
-            users
-                .filter(user => user.balance == maxBalance)
-                .forEach(user => greatestBalance.innerHTML += `${user.company}<br>`);
-
-            let lowestBalance = document.querySelector("#lowestBalanceCompanyOutput");
-            users
-                .filter(user => user.balance == minBalance)
-                .forEach(user => lowestBalance.innerHTML += `${user.company}<br>`);
+            div.append(ul);
+            return div;
         }
-
-        showAllEmails();
-        showHigestFriendCount();
-        showMinMaxBalance();
+        
+        users.forEach(user => {
+            let card = createUserCard(user);
+            document.body.append(card);
+        });
     </script>
 </body>
 

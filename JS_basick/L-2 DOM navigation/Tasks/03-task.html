@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,11 +17,13 @@
             border: 1px solid black;
         }
 
-        td, th {
+        td,
+        th {
             padding: 8px;
         }
     </style>
 </head>
+
 <body>
     <table id="statsTable">
         <tr>
@@ -63,6 +66,11 @@
             <td>125</td>
             <td>100</td>
         </tr>
+        <tr>
+            <td>Итого:</td>
+            <td id='firstDepartment'></td>
+            <td id='secondDepartment'></td>
+        </tr>
     </table>
 
     <div id="result"></div>
@@ -70,11 +78,36 @@
     <script>
         /*
         Задание:
-        Добавьте строку "Итого" для таблицы statsTable. Напишите сценарий, которым выведите во вторую ячейку этой строки сумму всех числовых значений второй колонки.
-        Выведите в третью ячейку этой строки сумму всех числовых значений из третьей колонки таблицы.
-        В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж" на основе раннее вычисленных значений в строке "Итого".
-        Используйте любые методы, которые были рассмотрены на в прошлых уроках.
+        Добавьте строку "Итого" для таблицы statsTable. Напишите сценарий, которым выведите во вторую ячейку этой строки сумму 
+        всех числовых значений второй колонки.Выведите в третью ячейку этой строки сумму всех числовых значений из третьей 
+        колонки таблицы. В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж"
+        на основе раннее вычисленных значений в строке "Итого". Используйте любые методы, которые были рассмотрены на в прошлых
+        уроках.
         */
+       
+        let sumFirstDep = 0;
+        let sumSecondDep = 0;
+
+        let rowTable = document.querySelectorAll('tr');
+
+        for (let i = 0; i < rowTable.length; i++) {
+            if (i == 0) {
+                continue;
+            }
+            else if (i == rowTable.length - 1) {
+                rowTable[i].children[1].textContent = sumFirstDep;
+                rowTable[i].children[2].textContent = sumSecondDep;
+            }
+            else {
+                sumFirstDep += Number(rowTable[i].children[1].textContent);
+                sumSecondDep += Number(rowTable[i].children[2].textContent);
+            }
+        }
+
+        let winDep = sumFirstDep > sumSecondDep ? "Отдел 1 сделал больше продаж" : "Отдел 2 сделал больше продаж";
+        document.querySelector('#result').textContent = winDep;
+
     </script>
 </body>
+
 </html>

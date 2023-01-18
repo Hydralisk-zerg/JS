@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td>Июль</td>
-            <td>100</td>
+            <td>110</td>
         </tr>
         <tr>
             <th>Итого</th>
@@ -61,9 +61,20 @@
         /*
         Задание:
         Напишите сценарий, который на основании значений во второй колонке таблицы #statsTable поменяет цвет строк таблицы (tr)
-        Если во второй ячейке значение больше 100, строка должна отображаться зеленым цветом, если значение менее 100 - красным цветом.
+        Если во второй ячейке значение больше 100, строка должна отображаться зеленым цветом, если значение менее 100 - красным 
+        цветом.
         Для смены цвета строки используйте код row.style.backgroundColor = "цвет"
         */
+        let totalSum = 0;
+        let outputTh = document.querySelector("#output");
+        let rowsFor = document.querySelectorAll("#statsTable td:nth-child(2)");
+        
+        for(let row of rowsFor){
+            row.parentElement.style.backgroundColor = Number(row.textContent) > 100? 'green': 'red';
+            totalSum += Number(row.textContent);
+        }
+        outputTh.textContent = totalSum;
+        
     </script>
 </body>
 
