@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 05</title>
+</head>
+
+<body>
+    <div data-bind="firstName"></div>
+    <div data-bind="lastName"></div>
+    <div data-bind="age"></div>
+    <div data-bind="email"></div>
+    
+    <div data-bind="Name"></div>
+    <div data-bind="age2"></div>
+    <div data-bind="eMail"></div>
+
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который свойства объекта user выведет в элементы на странице, которые помечены
+        атрибутами data-bind. При этом значение атрибута это имя свойства, значение которого должно 
+        отобразится в элементе. Например, в <div data-bind="firstName"></div> должно отобразится значение 
+        свойства firstName объекта user Попробуйте написать универсальную функцию, которая сможет выводить 
+        любой объект с любыми свойствами в разметку в соответствующие элементы, помеченные атрибутом.
+        Для обхода свойств объекта, можно использовать цикл for in
+        */
+
+        let user = {
+            firstName: "Jhon",
+            lastName: "Doe",
+            age: "25",
+            email: "test@test.com"
+        }
+
+        let user2 = {
+            Name: "Jhons",
+            age2: "35",
+            eMail: "test2@test.com"
+        }
+
+        function outputValue(dictValue) {
+            let divValue = document.querySelectorAll("[data-bind]");
+            for (const div of divValue) {
+                for (const dict in dictValue) {
+                    if (div.dataset.bind == dict) {
+                        div.textContent = dictValue[dict];
+                    }
+                }
+            }
+        }
+
+        outputValue(user);
+        outputValue(user2);
+
+    </script>
+</body>
+
+</html>
