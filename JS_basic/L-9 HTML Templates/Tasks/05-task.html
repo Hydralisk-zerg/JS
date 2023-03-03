@@ -14,10 +14,14 @@
 </head>
 
 <body>
+    <template id="templateHead">
+        <li>Full Name: {{name.first}} {{name.last}}. Age: {{age}} yers. Email {{email}}.</li>
+    </template>
     <p>Пользователи системы:</p>
     <ul id="usersList">
     </ul>
     
+    <script src="mustache.min.js"></script>
     <script>
         /*
         Задание:
@@ -138,15 +142,12 @@
         ];
 
         let list = document.querySelector("#usersList");
+        let templateHead = document.querySelector('#templateHead').innerHTML;
+
+        users.forEach(user => {
+            list.insertAdjacentHTML('beforeend', Mustache.render(templateHead, user ));
+        });
         
-        for (let i = 0; i < users.length; i++) { 
-            const currentUser = users[i];
-            let fullName = `${currentUser.name.first} ${currentUser.name.first}`;
-            let liContent = `${fullName} (${currentUser.email})`;
-            let li = document.createElement("li");
-            li.textContent = liContent;
-            list.append(li);
-        }
     </script>
 </body>
 

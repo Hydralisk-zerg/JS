@@ -38,6 +38,14 @@
                 author: "Секреты JavaScript ниндзя"
             }
         ];
+        let template = document.querySelector('#template');
+        
+        books.forEach(e => {
+            let clonedTempalte = template.content.cloneNode(true);
+            clonedTempalte.querySelector('#titlePlaceholder').textContent = e.title;
+            clonedTempalte.querySelector('#authorPlaceholder').textContent = e.author;
+            document.body.append(clonedTempalte);
+        })
     </script>
 </body>
 
