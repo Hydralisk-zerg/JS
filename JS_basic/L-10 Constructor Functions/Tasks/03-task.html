@@ -39,7 +39,7 @@
          
 
             this.showStats = function (element) {
-                element.insertAdjacentHTML("beforeend", `<img src="${this.image}"><br />`);
+                element.insertAdjacentHTML("beforeend", `<img src="images/${this.image}"><br />`);
                 element.insertAdjacentHTML("beforeend", `Производитель: ${this.manufacturer}<br />`);
                 element.insertAdjacentHTML("beforeend", `Модель: ${this.model}<br />`);
                 element.insertAdjacentHTML("beforeend", `Год выпуска: ${this.year}<br />`);
@@ -47,7 +47,7 @@
             };
         }
 
-        let car1 = new Car("images/audi-a6-250.jpg", "Audi", "A6", 2011, "ABCD1234567890XYZ");
+        let car1 = new Car("audi-a6-250.jpg", "Audi", "A6", 2011, "ABCD1234567890XYZ");
         let car2 = new Car("jaguar-x-type-250.jpg", "Jaguar", "X-Type", 2008, "DCAF0987654321XYZ");
         let car3 = new Car("porsche-carrera-911-250.jpg", "Porsce", "Carrera 911", 2011, "EFGH0987654321XYZ");
 
